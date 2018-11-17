@@ -13,8 +13,9 @@ config :logger, level: :warn
 config :listentothis, Listentothis.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "123456",
+  password: "postgres",
   database: "listentothis_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+import_config "basic.secret.exs"

@@ -1,6 +1,8 @@
 import HTTPotion
 import Poison
 
+#This module will handle pagination and parsing off all data incomming from the listentothis subreddit
+
 defmodule ListentothisHandler.HandlerServer do
     use GenServer
     
@@ -9,23 +11,35 @@ defmodule ListentothisHandler.HandlerServer do
 
 
     #Implementation of User API
+    def initial_fetcher(section) do
+        HTTPotion.get("https://www.reddit.com/r/listentothis/#{section}.json?limit=1&after=t3_9wu4hg").body
+        |>Poison.Parser.parse!(%{})
+    end
+
+    def initial_fetcher(section,:before,before_code) do
+        HTTPotion.get("https://www.reddit.com/r/listentothis/#{section}.json?limit=1&before=#{before_code}").body
+        |>Poison.Parser.parse!(%{})
+    end
+
     
+    def initial_fetcher(section,:after,after_code) do
+        HTTPotion.get("https://www.reddit.com/r/listentothis/#{section}.json?limit=1&after=#{after_code}").body
+        |>Poison.Parser.parse!(%{})
+    end
+
     def setup_initial_fetch do
         IO.puts __MODULE__
-
-        HTTPotion.get("https://www.reddit.com/api/v1/authorize?client_id=#{@webappid}&response_type=code&state=RANDOM_STRING&redirect_uri=http://localhost:4000&duration=permanent&scope=identity")
-        |> IO.puts
 
         GenServer.start_link(__MODULE__,
                             %{
                                 current_page: @default_page, 
-                                current_section: @default_section, 
-                                secret: @secret
+                                current_section: @default_section
                             },
                             name: __MODULE__)
     end
 
     def fetch_more do
+        # HTTPotion.get("https://www.reddit.com/r/listentothis/new.json?limit=5&after=t3_9tc8aj")
         GenServer.call __MODULE__, :more 
     end
 
@@ -43,8 +57,7 @@ defmodule ListentothisHandler.HandlerServer do
 
     # def handle_cast(:reload, _state) do
     #     { :noreply, 
-    #         %{ 
-                
+    #         %{                
     #         }
     #     }
     # end

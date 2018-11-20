@@ -62,4 +62,4 @@ config :listentothis, Reddit,
   client_secret: System.get_env("REDDIT_CLIENT_SECRET"),
   client_uri: System.get_env("REDDIT_REDIRECT_URI")
 
-import_config "basic.secret.exs"
+#import_config "basic_secret.exs"

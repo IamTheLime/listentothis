@@ -1,26 +1,26 @@
-import HTTPotion
-import Poison
-require IEx
-
 defmodule ListentothisReddit.Getter do
-
+    import HTTPotion
+    import Poison
+    require IEx
+        
     def parse_list(list) do
         Enum.map(list,fn x -> %{
             :music_info => %{
-                :title => x["data"]["title"], 
-                :permalink => x["data"]["permalink"], 
+                :title => x["data"]["title"],
+                :permalink => x["data"]["permalink"],
                 :secure_media => x["data"]["secure_media"]
                 }
-            } 
+            }
         end)
     end
+
 # API to access reddit pages
     def reddit_fetcher(section) do
-        data = HTTPotion.get("https://www.reddit.com/r/listentothis/#{section}.json?limit=1&after=t3_9wu4hg").body
+        data = HTTPotion.get("https://www.reddit.com/r/listentothis/#{section}.json?limit=1").body
             |>Poison.Parser.parse!(%{})
         %{
-            :navigation_code => data["data"]["after"], 
-            :playlist => parse_list(data["data"]["children"]) 
+            :navigation_code => data["data"]["after"],
+            :playlist => parse_list(data["data"]["children"])
         }
     end
 

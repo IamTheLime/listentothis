@@ -23,4 +23,16 @@ defmodule ListentothisWeb.UserView do
     user.id
   end
 
+  def error_sanitizer( %{errors: errors}, subfield) do
+    subfield_error = errors |> List.keyfind( subfield, 0)
+    if subfield_error != nil do
+      case subfield do
+        :username -> "Username " <> elem(elem(subfield_error,1), 0)
+        :email -> "Email " <> elem(elem(subfield_error,1), 0)
+        :name -> "Name " <> elem(elem(subfield_error,1), 0)
+        :password -> "Password " <> elem(elem(subfield_error,1), 0)
+      end
+    end
+  end
+
 end

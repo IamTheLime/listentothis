@@ -20,7 +20,7 @@ defmodule Listentothis.Mixfile do
   def application do
     [
       mod: {Listentothis.Application, []},
-      extra_applications: [:logger, :runtime_tools, :oauth2]
+      extra_applications: [:logger, :runtime_tools, :oauth2, :comeonin]
     ]
   end
 
@@ -45,7 +45,8 @@ defmodule Listentothis.Mixfile do
       {:plug, "~> 1.7"},
       {:httpotion, "~> 3.1"},
       {:poison, "~> 3.0"},
-      {:oauth2, "~> 0.9"}
+      {:oauth2, "~> 0.9"},
+      {:comeonin, "~> 4.1"}
     ]
   end
 

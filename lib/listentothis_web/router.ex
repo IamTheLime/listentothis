@@ -15,9 +15,12 @@ defmodule ListentothisWeb.Router do
 
   scope "/", ListentothisWeb do
     pipe_through :browser # Use the default browser stack
+    get "/users/signup", UserController, :new
+    post "/users", UserController, :create
+    get "/users/login", UserController, :enter
     get "/users", UserController, :index
-    get "/users/:id", UserController, :show
     get "/", PageController, :index
+    get "/users/:id", UserController, :show
   end
 
   # Other scopes may use custom stacks.

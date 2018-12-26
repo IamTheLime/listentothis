@@ -5,9 +5,13 @@ defmodule Listentothis.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :name, :string
       add :username, :string
+      add :email, :string
       add :password, :string
 
       timestamps()
     end
+
+    create unique_index(:users, :username)
+    create unique_index(:users, :email)
   end
 end

@@ -34,7 +34,7 @@ config :listentothis, ListentothisWeb.Endpoint,
 config :listentothis, ListentothisWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg|sass)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/listentothis_web/views/.*(ex)$},
       ~r{lib/listentothis_web/templates/.*(eex)$}

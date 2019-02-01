@@ -19,3 +19,9 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+import "./sidebar"
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('Your document is ready!');
+});

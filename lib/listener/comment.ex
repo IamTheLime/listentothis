@@ -20,6 +20,6 @@ defmodule Listener.Comment do
   def changeset(comment, attrs) do
     comment
     |> cast(attrs, [:title, :description, :date_created, :upvotes, :downvotes])
-    |> validate_required([:title, :description, :date_created, :upvotes, :downvotes])
+    |> assoc_constraint([ :posts, :users])
   end
 end

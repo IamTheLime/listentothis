@@ -46,7 +46,8 @@ defmodule Listentothis.Mixfile do
       {:httpotion, "~> 3.1"},
       {:poison, "~> 3.0"},
       {:oauth2, "~> 0.9"},
-      {:comeonin, "~> 4.1"}
+      {:pbkdf2_elixir, "~> 0.12"},
+      {:comeonin, "~> 4.1"}    
     ]
   end
 

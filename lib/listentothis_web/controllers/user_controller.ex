@@ -3,10 +3,12 @@ defmodule ListentothisWeb.UserController do
   alias Listentothis.Repo
   alias Listener.User
   import IEx
+  import Listentothis.Auth, only: [ authenticate_user: 2]
+
+  plug :authenticate_user when action in [:index, :show]
 
   def index(conn, _params) do
-    # users = Repo.all(:users)
-    render conn, "index.html"#, users: users
+    render conn, "index.html"
   end
 
   def show(conn, identification) do
@@ -28,8 +30,9 @@ defmodule ListentothisWeb.UserController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
+        |> Listentothis.Auth.login(user)
         |> put_flash(:info, "#{user.name} created!")
-        |> redirect(to: user_path(conn, :enter))
+        |> redirect(to: user_path(conn, :index))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

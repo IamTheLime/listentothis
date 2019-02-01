@@ -14,6 +14,7 @@ defmodule Listentothis.Application do
       supervisor(ListentothisWeb.Endpoint, []),
       # Start your own worker by calling: Listentothis.Worker.start_link(arg1, arg2, arg3)
       # worker(Listentothis.Worker, [arg1, arg2, arg3]),
+      supervisor(ListentothisHandler.HandlerServer, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

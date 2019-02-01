@@ -11,17 +11,4 @@ defmodule Listentothis.Repo do
     {:ok, Keyword.put(opts, :url, System.get_env("DATABASE_URL"))}
   end
 
-  # def all(_module), do: []
-
-  # def get(:user, id) do
-  #   Enum.find all(:users), fn userDetails -> Map.get(userDetails, :id) == id end
-  # end
-
-  # def get_by(module, params) do
-  #   Enum.find all(module),
-  #   fn userDetails ->
-  #       Enum.all?(params, fn {key, val} -> Map.get(userDetails, key) == val end)
-  #   end
-  # end
-
 end

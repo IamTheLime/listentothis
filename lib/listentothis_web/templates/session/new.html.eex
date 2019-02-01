@@ -1,0 +1,12 @@
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <%= form_for @conn, session_path(@conn, :create), [as: :session, class: "form-signin"], fn f -> %> 
+        <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
+        <div class="form-label-group">
+            <%= text_input f, :username, placeholder: "Username", class: "form-control" %> 
+        </div>
+        <div class="form-label-group">
+            <%= password_input f, :password, placeholder: "Password", class: "form-control" %>
+        </div>
+        <%= submit "Log in", class: "btn btn-lg btn-dark btn-block" %>
+    <% end %>
+</div> 

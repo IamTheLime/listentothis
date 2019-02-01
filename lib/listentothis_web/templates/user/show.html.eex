@@ -1,10 +1,9 @@
 <div class="jumbotron">
-  <h2> The user with ID [<%= getID(@user) %>] has the following properties:</h2>
+  <h2> The user with ID  has the following properties:</h2>
 </div>
 <div style="background-color:#000000" class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
     <img class="mr-3" src="<%= static_path(@conn, "/images/phoenix.png") %>" alt="" width="48" height="48">
     <div class="lh-100">
-        <h6 class="mb-0 text-white lh-100"><%= username(@user) %></h6>
-        <small><%= first_name(@user) %> <%= last_name(@user) %></small>
+        <h6 class="mb-0 text-white lh-100"></h6>
     </div>
 </div>

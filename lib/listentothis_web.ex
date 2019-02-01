@@ -23,6 +23,7 @@ defmodule ListentothisWeb do
       import Plug.Conn
       import ListentothisWeb.Router.Helpers
       import ListentothisWeb.Gettext
+      import Listentothis.Auth, only: [ authenticate_user: 2]
     end
   end
 
@@ -48,6 +49,8 @@ defmodule ListentothisWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+
+      import Listentothis.Auth
     end
   end
 

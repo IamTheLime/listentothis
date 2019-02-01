@@ -1,12 +1,3 @@
 <div class="jumbotron">
   <h2> This is an initial user listing menu</h2>
 </div>
-    <table class="table">
-        <%= for user <- @users do %>
-        <tr>
-            <td><%= first_name(user) %></td>
-            <td><%= user.username %></td>
-            <td><%= link(user.id, to: "/users/#{user.id}", class: "btn") %></td>
-        </tr>
-        <% end %>
-    </table>
